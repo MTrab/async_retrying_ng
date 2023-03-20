@@ -13,7 +13,7 @@ pathspec==0.11.1
 platformdirs==2.5.4
 pluggy==1.0.0
 pyparsing==3.0.9
-pytest==7.2.0
+pytest==7.2.2
 pytest-asyncio==0.20.2
 pytest-cov==4.0.0
 pytest-mock==3.10.0
