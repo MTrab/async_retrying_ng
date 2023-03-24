@@ -1,20 +1,21 @@
-# async_retrying
+## async\_retrying
 
 Next Gen. simple retrying for asyncio - fork/fix from https://GitHub.com/hellysmile/async_retrying but updated for Python 3.10+ only
 
 ## Installation
------
-shell<br/>
-```pip install async_retrying_ng```
+
+shell
+
+`pip install async_retrying_ng`
 
 ## Usage
------
 
 python
-```
+
+```plaintext
     import asyncio
 
-    from async_retrying import retry
+    from async_retrying_ng import retry
 
     counter = 0
 

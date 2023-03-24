@@ -1,6 +1,19 @@
-[build-system]
-requires = [ "setuptools>=41", "wheel", "setuptools-git-versioning", ]
-build-backend = "setuptools.build_meta"
+[tool.poetry]
+name = "async_retrying_ng"
+version = "0.1.1"
+description = "Next Gen. simple retrying for asyncio."
+authors = ["Malene Trab <malene@trab.dk>"]
+documentation = "https://github.com/mtrab/async_retrying_ng"
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+packages = [
+    { include = "async_retrying_ng" },
+]
 
-[tool.setuptools-git-versioning]
-enabled = true
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+async-timeout = "4.0.2"
