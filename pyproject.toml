@@ -16,4 +16,4 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-async-timeout = "4.0.2"
+async-timeout = ">=4.0.2"
