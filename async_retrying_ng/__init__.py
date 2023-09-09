@@ -1,3 +1,4 @@
+"""Async retry module."""
 import asyncio
 import copy
 import inspect
@@ -14,11 +15,11 @@ propagate = forever = ...
 
 
 class RetryError(Exception):
-    pass
+    """Raised when retry attempts has been exceeded."""
 
 
 class ConditionError(Exception):
-    pass
+    """Raised when an conditional error occurs."""
 
 
 def unpartial(fn):
