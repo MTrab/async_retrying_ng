@@ -1,8 +1,10 @@
+"""Async retry module."""
 import asyncio
 import copy
 import inspect
 import logging
 from functools import wraps
+import random
 
 import async_timeout
 
@@ -13,11 +15,11 @@ propagate = forever = ...
 
 
 class RetryError(Exception):
-    pass
+    """Raised when retry attempts has been exceeded."""
 
 
 class ConditionError(Exception):
-    pass
+    """Raised when an conditional error occurs."""
 
 
 def unpartial(fn):
@@ -46,6 +48,10 @@ def retry(
     fn=None,
     *,
     attempts=3,
+    delay=0.5,
+    max_delay=None,
+    backoff=1,
+    jitter=0,
     immutable=False,
     cls=False,
     kwargs=False,
@@ -83,6 +89,7 @@ def retry(
                 _retry_exceptions = retry_exceptions
 
             attempt = 1
+            _delay = delay
 
             if cls:
                 assert fn_args
@@ -179,8 +186,17 @@ def retry(
                         exc,
                         fn_args,
                         fn_kwargs,
+                        delay=_delay,
                         loop=_loop,
                     )
+
+                    _delay *= backoff
+                    if isinstance(jitter, tuple):
+                        _delay += random.uniform(*jitter)
+                    else:
+                        _delay += jitter
+                    if max_delay is not None:
+                        _delay = min(_delay, max_delay)
 
                     attempt += 1
 

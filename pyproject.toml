@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "async_retrying_ng"
-version = "0.1.1"
+version = "0.1.3"
 description = "Next Gen. simple retrying for asyncio."
 authors = ["Malene Trab <malene@trab.dk>"]
 documentation = "https://github.com/mtrab/async_retrying_ng"
